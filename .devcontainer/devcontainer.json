@@ -14,7 +14,7 @@
   "remoteUser": "vscode",
   "runArgs": [
     "-v",
-    "/var/run/docker.sock:/var/run/docker.sock"
+    "/var/run/docker.sock:/var/run/docker-host.sock"
   ],
   "mounts": [
     "source=devcontainer-m2,target=/home/vscode/.m2,type=volume",
