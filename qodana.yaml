@@ -1,0 +1,11 @@
+version: "1.0"
+linter: jetbrains/qodana-jvm-community:latest
+profile:
+  name: "qodana.recommended"
+exclude:
+  - name: "Generated files"
+    paths:
+      - "build/**"
+      - "out/**"
+      - "**/generated/**"
+failThreshold: 0

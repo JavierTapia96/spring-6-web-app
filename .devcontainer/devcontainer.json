@@ -1,0 +1,38 @@
+{
+  "name": "Spring Framework Course",
+  "image": "mcr.microsoft.com/devcontainers/base:bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "21",
+      "jdkDistro": "ms",
+      "installMaven": true,
+      "mavenVersion": "3.9.8"
+    },
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "remoteUser": "vscode",
+  "runArgs": [
+    "-v",
+    "/var/run/docker.sock:/var/run/docker.sock"
+  ],
+  "mounts": [
+    "source=devcontainer-m2,target=/home/vscode/.m2,type=volume",
+    "source=devcontainer-qodana-cache,target=${containerWorkspaceFolder}/.qodana/cache,type=volume",
+    "source=devcontainer-qodana-results,target=${containerWorkspaceFolder}/.qodana/results,type=volume"
+  ],
+  "containerEnv": {
+    "MAVEN_OPTS": "-Xmx1024m"
+  },
+  "forwardPorts": [
+    8080,
+    8081
+  ],
+  "postCreateCommand": "sudo mkdir -p /home/vscode/.m2/repository && sudo chown -R vscode:vscode /home/vscode/.m2 && git config --global --add safe.directory ${containerWorkspaceFolder} || true",
+  "postStartCommand": "sudo chown -R vscode:vscode /home/vscode/.m2 || true",
+  "customizations": {
+    "jetbrains": {
+      "prebuildOnOpen": true
+    }
+  }
+}
