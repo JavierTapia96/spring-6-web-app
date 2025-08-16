@@ -12,10 +12,6 @@
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
   "remoteUser": "vscode",
-  "runArgs": [
-    "-v",
-    "/var/run/docker.sock:/var/run/docker-host.sock"
-  ],
   "mounts": [
     "source=devcontainer-m2,target=/home/vscode/.m2,type=volume",
     "source=devcontainer-qodana-cache,target=${containerWorkspaceFolder}/.qodana/cache,type=volume",
@@ -32,7 +28,13 @@
   "postStartCommand": "sudo chown -R vscode:vscode /home/vscode/.m2 || true",
   "customizations": {
     "jetbrains": {
-      "prebuildOnOpen": true
+      "prebuildOnOpen": true,
+      "plugins": [
+        "com.github.catppuccin.jetbrains",
+        "com.github.catppuccin.jetbrains_icons",
+        "com.intellij.spring.debugger",
+        "com.intellij.jvm.dfa.analysis"
+      ]
     }
   }
 }
