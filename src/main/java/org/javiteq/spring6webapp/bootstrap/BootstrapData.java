@@ -2,8 +2,10 @@ package org.javiteq.spring6webapp.bootstrap;
 
 import org.javiteq.spring6webapp.domain.Author;
 import org.javiteq.spring6webapp.domain.Book;
+import org.javiteq.spring6webapp.domain.Publisher;
 import org.javiteq.spring6webapp.repositories.AuthorRepository;
 import org.javiteq.spring6webapp.repositories.BookRepository;
+import org.javiteq.spring6webapp.repositories.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,10 +15,14 @@ public class BootstrapData implements CommandLineRunner {
 
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
+    private final PublisherRepository publisherRepository;
 
-    public BootstrapData(AuthorRepository authorRepository, BookRepository bookRepository) {
+    public BootstrapData(AuthorRepository authorRepository,
+                         BookRepository bookRepository,
+                         PublisherRepository publisherRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
+        this.publisherRepository = publisherRepository;
     }
 
     @Override
@@ -55,5 +61,16 @@ public class BootstrapData implements CommandLineRunner {
         System.out.println("In Bootstrap");
         System.out.println("Author Count: " + authorRepository.count());
         System.out.println("Book Count: " + bookRepository.count());
+
+        Publisher publisher = new Publisher();
+        publisher.setPublisherName("New York Publications");
+        publisher.setAddress("123 Main St");
+        publisher.setCity("New York City");
+        publisher.setState("New York");
+        publisher.setZip("10001");
+
+        Publisher publisherSaved = publisherRepository.save(publisher);
+
+        System.out.println("Publisher Count: " + publisherRepository.count());
     }
 }
