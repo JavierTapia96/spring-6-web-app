@@ -1,5 +1,5 @@
 {
-  "name": "Spring Framework Course",
+  "name": "Spring Framework Course - Web App",
   "image": "mcr.microsoft.com/devcontainers/base:bookworm",
   "features": {
     "ghcr.io/devcontainers/features/java:1": {
@@ -33,7 +33,9 @@
         "com.github.catppuccin.jetbrains",
         "com.github.catppuccin.jetbrains_icons",
         "com.intellij.spring.debugger",
-        "com.intellij.jvm.dfa.analysis"
+        "com.intellij.jvm.dfa.analysis",
+        "com.intellij.grazie.pro",
+        "com.haulmont.jpab"
       ]
     }
   }
